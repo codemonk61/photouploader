@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+</head>
+<body>
+    <input type="file" name="" id="myFileInput">
+    <br>
+    <br>
+    <h4 style="background-color: rgb(240, 135, 240);text-align: center;padding: 20px 0;">Your Choosen Image</h4>
+    <br>
+    <br>
+    <img src="" alt="" id="img" width="100%">
+
+<script>
+    document.querySelector("#myFileInput").addEventListener("change", function(){
+        //console.log(this.files)
+        const reader=new FileReader();
+        reader.addEventListener("load",function(){
+            //console.log(reader.result)
+            localStorage.setItem("image",reader.result)
+        })
+
+
+        reader.readAsDataURL(this.files[0]);
+    });
+    document.addEventListener("DOMContentLoaded",()=>{
+        const recentImage=localStorage.getItem("image");
+        if(recentImage){
+            document.querySelector("#img").setAttribute("src",recentImage)
+        }
+    })
+</script>
+</body>
+</html>
