@@ -5,14 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portfolio</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            
+        }
+        h4{
+            background-color: rgb(240, 135, 240);
+            text-align: center;
+            padding: 20px 0;
+
+        }
+        h3{
+        
+            background-color: rgb(240, 135, 240);
+            text-align: center;
+             
+        }
+        input{
+            margin-top: 20px;
+        }
+        button{
+            background-color: rgb(240, 135, 240);
+            text-align: center;padding: 8px 15px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+        }
+
+    </style>
+
 </head>
 <body>
-    <input type="file" name="" id="myFileInput">
+    <h4>Choose An Image</h4>
+    <input type="file" name="" id="myFileInput" >
     <br>
     <br>
-    <h4 style="background-color: rgb(240, 135, 240);text-align: center;padding: 20px 0;">Your Choosen Image</h4>
-    <br>
-    <br>
+    <button  id="btn">ShowImage</button>
+    
+    <h3 id="title"></h3>
     <img src="" alt="" id="img" width="100%">
 
 <script>
@@ -27,9 +59,11 @@
 
         reader.readAsDataURL(this.files[0]);
     });
-    document.addEventListener("DOMContentLoaded",()=>{
+    let btn=document.getElementById("btn")
+    btn.addEventListener("click",()=>{
         const recentImage=localStorage.getItem("image");
         if(recentImage){
+            document.getElementById("title").innerText="Your Image"
             document.querySelector("#img").setAttribute("src",recentImage)
         }
     })
